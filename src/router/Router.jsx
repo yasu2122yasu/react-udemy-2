@@ -1,17 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../Home';
 import { Page1Routes } from './Page1Routes';
-import { Page2 } from '../Page2';
+import { Page2Routes } from './Page2Routes';
 
 export const Router = () => {
-  const url = '/page1';
+  const url1 = '/page1';
+  const url2 = '/page2';
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       {Page1Routes.map((route, index) => (
-        <Route key={route.path} path={`${url}${route.path}`} element={route.children} />
+        <Route key={route.path} path={`${url1}${route.path}`} element={route.children} />
       ))}
-      <Route path="/page2" element={<Page2 />} />
+      {Page2Routes.map((route, index) => (
+        <Route key={route.path} path={`${url2}${route.path}`} element={route.children} />
+      ))}
     </Routes>
   );
 };
